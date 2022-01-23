@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            color:blue;
+        }
+        button{
+            background-color: green;
+            width: 120px;
+            border-radius: 3px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">Product CURD Operations Using nodejs with Mongodb</h1>
+    <form>
+        <h3>CREATE</h3>
+        <label>1. Create Product Name with Category Id:</label> 
+        <br><br>
+        &nbsp; &nbsp;<label> Create Product Name :</label>&nbsp; &nbsp;
+        <input type="name" id="productname">
+        &nbsp; &nbsp;<label>Enter CategoryId :</label>&nbsp; &nbsp;  
+        <input type="name" id="categoryId">
+        <input type="submit" id="product" onclick="fun1();" style="background-color:green;width: 120px; border-radius: 3px;color: white;">
+        <br><br><br>
+
+
+        <h3>READ</h3>
+        <label>2. Find Product Name  with  productId:</label>
+        <br><br>
+         &nbsp; &nbsp;<label> Find Product Name :</label>&nbsp; &nbsp;
+        <input type="name" id="findproduct">
+         &nbsp; &nbsp;<label>Enter CategoryId :</label>&nbsp; &nbsp;
+        <input type="name" id="productId"> 
+        <button type="Search" id="Search" onclick="fun2();">Search</button> 
+        <br><br><br>
+
+        <h3>UPDATE</h3>
+        <label>3. Update Product Name  using ProductId:</label>
+        <br><br>
+        &nbsp; &nbsp;<label>Enter ProductId :</label>
+        &nbsp; &nbsp;
+        &nbsp; &nbsp;<input type="name" id="updateId">
+        <label>Update Product Name :</label>&nbsp; &nbsp;
+        <input type="name" id="updateproduct">
+        <button type="Update" id="Update" onclick="fun3();">Update</button>      
+        <br><br><br>
+
+        <h3>DELETE</h3>
+        <label>4. Delete Product Name Using ProductId :</label>
+        <input type="name" id="deletename">
+        <button type="delete" id="delete" onclick="fun4();">Delete</button> 
+    </form>
+    <script>
+        function fun1(){
+            var request = new XMLHttpRequest();
+            request.open("GET",`http://localhost:3000/product/createproduct/${document.getElementById("productname").value}/${document.getElementById("categoryId").value}`)
+            request.send();
+          }
+        function fun2(){
+            var request = new XMLHttpRequest();
+            request.open("GET",`http://localhost:3000/product/findproduct/${document.getElementById("findproduct").value}/${document.getElementById("productId").value}`)
+            request.send();
+        } 
+        function fun3(){
+            var request = new XMLHttpRequest();
+            request.open("GET",`http://localhost:3000/product/updateproductData/${document.getElementById("updateId").value}/${document.getElementById("updateproduct").value}`)
+            request.send();
+        }
+        function fun4(){
+            var request = new XMLHttpRequest();
+            request.open("GET",`http://localhost:3000/deleteproduct/deleteCategory/${document.getElementById("deletename").value}`)
+            request.send();
+          }  
+    </script>
+</body>
+</html>
